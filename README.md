@@ -27,27 +27,35 @@ ssh -i "my-new-linux-key.pem" ubuntu@ec2-54-144-112-196.compute-1.amazonaws.com
 
 
 ##  Step 2: Update System Packages
+
+```bash
 sudo apt update
 
 🔑 Step 3: Add Grafana GPG Key
+```bash
 sudo mkdir -p /etc/apt/keyrings
 wget -q -O - https://apt.grafana.com/gpg.key \
 | sudo tee /etc/apt/keyrings/grafana.asc
 
 📦 Step 4: Add Grafana Stable Repository
+```bash
 echo "deb [signed-by=/etc/apt/keyrings/grafana.asc] https://apt.grafana.com stable main" \
 | sudo tee /etc/apt/sources.list.d/grafana.list
 
 
 📥 Step 5: Install Grafana (Stable)
+```bash
 sudo apt update
 sudo apt install grafana -y
 
 ⚙️ Step 6: Start & Enable Grafana Service
+```bash
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
 
 ✅ Step 7: Verify Grafana Status
+
+```bash
 sudo systemctl status grafana-server
 
 🌐 Step 8: Access Grafana Web UI
